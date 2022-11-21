@@ -10,7 +10,8 @@ resource "aws_vpc" "vpc" {
     local.tags,
     var.additional_tags,
     {
-      "ops/module" = "vpc"
+      "ops/module" = "vpc",
+      "Name" = var.vpc_name
     }
   )
 }
@@ -28,7 +29,8 @@ resource "aws_subnet" "private_subnets" {
     var.additional_tags,
     {
       "ops/module" = "subnet",
-      "ops/network" = "private"
+      "ops/network" = "private",
+      "Name" = "Private-Subnet-${each.key}"
     }
   )
 }
@@ -46,7 +48,8 @@ resource "aws_subnet" "public_subnets" {
     var.additional_tags,
     {
       "ops/module" = "subnet",
-      "ops/network" = "public"
+      "ops/network" = "public",
+      "Name" = "Public-Subnet-${each.key}"
     }
   )
 }
@@ -61,11 +64,11 @@ resource "aws_route_table" "private_route_table" {
     var.additional_tags,
     {
       "ops/module" = "route_table",
-      "ops/network" = "private"
+      "ops/network" = "private",
+      "Name" = "Private-Route-Table-${each.key}"
     }
   )
 }
-
 
 resource "aws_route_table_association" "private_rt_assoc" {
   count = length(aws_subnet.private_subnets)
@@ -73,7 +76,6 @@ resource "aws_route_table_association" "private_rt_assoc" {
   # Trim prefix doesn't seem to work
   # route_table_id = aws_route_table.private_route_table[trimprefix(each.value.availability_zone, "ap-southeast-1")].id
   route_table_id = aws_route_table.private_route_table[count.index].id
-
 }
 
 resource "aws_route_table" "public_route_table" {
@@ -86,6 +88,7 @@ resource "aws_route_table" "public_route_table" {
     {
       "ops/module" = "route_table",
       "ops/network" = "public"
+      "Name" = "Public-Route-Table-${each.key}"
     }
   )
 }
@@ -96,7 +99,30 @@ resource "aws_route_table_association" "public_rt_assoc" {
   # Trim prefix doesn't seem to work
   # route_table_id = aws_route_table.public_route_table[trimprefix(each.value.availability_zone, "ap-southeast-1")].id
   route_table_id = aws_route_table.public_route_table[count.index].id
+}
 
+resource "aws_nat_gateway" "private_nat" {
+  for_each = aws_subnet.private_subnets
+  connectivity_type = "private"
+  subnet_id = each.value.id
+}
+
+resource "aws_route" "private_nat_gw" {
+  count = length(aws_route_table.private_route_table)
+  route_table_id = aws_route_table.private_route_table[count.index].id
+  nat_gateway_id = aws_nat_gateway.private_nat[count.index].id
+  destination_cidr_block = "0.0.0.0/0"
+}
+
+resource "aws_internet_gateway" "igw" {
+  vpc_id = aws_vpc.vpc.id
+}
+
+resource "aws_route" "public_igw_route" {
+  count = length(aws_route_table.public_route_table)
+  route_table_id = aws_route_table.public_route_table[count.index].id
+  gateway_id = aws_internet_gateway.igw.id
+  destination_cidr_block = "0.0.0.0/0"
 }
 
 data "aws_region" "current" {}

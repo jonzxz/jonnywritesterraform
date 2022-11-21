@@ -34,6 +34,12 @@ variable "additional_tags" {
   default = {}
 }
 
+variable "vpc_name" {
+  type = string
+  description = "Name of VPC"
+  default = "Jonny-Mini-VPC"
+}
+
 locals {
   tags = {
     "ops/managed-by" = "Terraform",
