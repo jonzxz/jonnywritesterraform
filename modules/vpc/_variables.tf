@@ -36,8 +36,11 @@ variable "additional_tags" {
 
 locals {
   tags = {
-    "ops/module" = "vpc",
     "ops/managed-by" = "Terraform",
     "ops/module-primary" = "vpc"
   }
+
+  # Only need 2 AZs to simulate HA, no need 3
+  az_names = slice(data.aws_availability_zones.azs.names, 0, 2)
+  region = data.aws_region.current.name
 }
