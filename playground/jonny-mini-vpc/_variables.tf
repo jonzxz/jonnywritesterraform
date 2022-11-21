@@ -1,11 +1,11 @@
 variable "vpc_name" {
-  type = string
+  type        = string
   description = "Name of VPC"
-  default = "Jonny-Mini-VPC"
+  default     = "Jonny-Mini-VPC"
 }
 
 variable "cidr_block" {
-  type = string
+  type        = string
   description = "VPC CIDR Range"
-  default = "172.31.1.0/24"
+  default     = "172.31.1.0/24"
 }
