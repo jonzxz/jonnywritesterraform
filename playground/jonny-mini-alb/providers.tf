@@ -1,12 +1,9 @@
 terraform {
-  backend "local" {}
-
-  # TODO, actually make a bucket
-  # backend "s3" {
-  #   bucket = "jonny-terraform-bucket.jonathankerk.com"
-  #   key = "playground/jonny-mini-vpc/terraform.tfstate"
-  #   region = "ap-southeast-1"
-  # }
+  backend "s3" {
+    bucket = "jonny-multi-purpose-bucket"
+    key = "terraform/playground/jonny-mini-alb/terraform.tfstate"
+    region = "ap-southeast-1"
+  }
 
   required_providers {
     aws = {
