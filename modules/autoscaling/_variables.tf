@@ -11,7 +11,7 @@ variable "service_name" {
 variable "max_size" {
   type        = number
   description = "Maximum size for Autoscaling"
-  default     = 1
+  default     = 3
 }
 
 variable "min_size" {
@@ -29,7 +29,7 @@ variable "health_check_grace_period" {
 variable "desired_capacity" {
   type        = number
   description = "Desired capacity for Autoscaling"
-  default     = 1
+  default     = 3
 }
 
 variable "instance_type" {
@@ -64,7 +64,7 @@ variable "port" {
 variable "health_check_type" {
   type        = string
   description = "Health check type for ALB, defaults EC2"
-  default     = "EC2"
+  default     = "ELB"
 }
 
 variable "additional_tags" {
