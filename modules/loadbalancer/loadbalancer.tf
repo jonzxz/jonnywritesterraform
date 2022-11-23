@@ -25,6 +25,21 @@ resource "aws_lb" "alb" {
   )
 }
 
+resource "aws_lb_listener" "http_listener" {
+  load_balancer_arn = aws_lb.alb.arn
+  port = "80"
+
+  default_action {
+    type = "fixed-response"
+
+    fixed_response {
+      content_type = "text/plain"
+      message_body = "Oops, I wasn't ready for this"
+      status_code = "200"
+    }
+  }
+}
+
 data "aws_subnets" "public_subnets" {
   filter {
     name = "vpc-id"
