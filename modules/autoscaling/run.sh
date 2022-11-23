@@ -1,3 +1,4 @@
+#!/bin/bash
 sudo systemctl restart amazon-ssm-agent
 sudo amazon-linux-extras enable epel
 sudo yum install epel-release -y
