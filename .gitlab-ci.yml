@@ -5,9 +5,9 @@ deploy-site:
   stage: deploy
   variables:
     S3_BUCKET_URI: "s3://jonny-nginx-bucket/"
-    STATIC_SITE_FILE_PATH: "playground/nginx-autoscaling/public.html"
+    STATIC_SITE_FILE_PATH: "playground/nginx-autoscaling/public/index.html"
   script: 
-    - aws s3 cp $STATIC_SITE_FILE_PATH s3://
+    - aws s3 cp $STATIC_SITE_FILE_PATH s3://$S3_BUCKET_URI
   rules:
     - if: $CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE == "push"
       when: always
