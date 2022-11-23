@@ -10,7 +10,7 @@ deploy-site:
     STATIC_SITE_FILE: "index.html"
     ASG_NAME: "nginx-autoscaling"
   script: 
-    - aws s3 cp $STATIC_SITE_FILE_PATH/$STATIC_SITE_FILE $S3_BUCKET_URI/STATIC_SITE_FILE
+    - aws s3 cp $STATIC_SITE_FILE_PATH/$STATIC_SITE_FILE $S3_BUCKET_URI/$STATIC_SITE_FILE
     - aws autoscaling start-instance-refresh --auto-scaling-group-name $ASG_NAME
   rules:
     - if: $CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE == "push"
