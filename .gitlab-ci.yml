@@ -3,6 +3,7 @@ stages:
 
 deploy-site:
   stage: deploy
+  image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
   variables:
     S3_BUCKET_URI: "s3://jonny-nginx-bucket/"
     STATIC_SITE_FILE_PATH: "playground/nginx-autoscaling/public.html"
