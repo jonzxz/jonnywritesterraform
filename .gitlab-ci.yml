@@ -10,4 +10,4 @@ deploy-site:
     - aws s3 cp $STATIC_SITE_FILE_PATH s3://
   rules:
     - if: $CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE == "push"
-  when: manual
+      when: always
