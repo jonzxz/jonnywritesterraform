@@ -1,5 +1,5 @@
 resource "aws_iam_role" "instance_role" {
-  name = "${var.service_name}-role"
+  name               = "${var.service_name}-role"
   assume_role_policy = data.aws_iam_policy_document.instance_assume_role.json
 
   tags = {
@@ -13,13 +13,13 @@ resource "aws_iam_instance_profile" "instance_profile" {
 }
 
 resource "aws_iam_role_policy" "policy" {
-  name = "${var.service_name}-inline-policy"
-  role = aws_iam_role.instance_role.id
+  name   = "${var.service_name}-inline-policy"
+  role   = aws_iam_role.instance_role.id
   policy = data.aws_iam_policy_document.allow_s3_access.json
 }
 
 resource "aws_iam_role_policy_attachment" "ssm_attachment" {
-  role = aws_iam_role.instance_role.name
+  role       = aws_iam_role.instance_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 

@@ -23,9 +23,9 @@ resource "aws_route_table_association" "private_rt_assoc" {
 }
 
 resource "aws_eip" "nat_eip" {
-  count =  length(aws_subnet.public_subnets)
-  vpc = true
-  
+  count = length(aws_subnet.public_subnets)
+  vpc   = true
+
   tags = merge(
     local.tags,
     var.additional_tags,
@@ -38,8 +38,8 @@ resource "aws_eip" "nat_eip" {
 }
 
 resource "aws_nat_gateway" "public_nat" {
-  count          = length(aws_subnet.public_subnets)
-  allocation_id = aws_eip.nat_eip[count.index].id
+  count             = length(aws_subnet.public_subnets)
+  allocation_id     = aws_eip.nat_eip[count.index].id
   connectivity_type = "public"
   subnet_id         = aws_subnet.public_subnets[count.index].id
 }

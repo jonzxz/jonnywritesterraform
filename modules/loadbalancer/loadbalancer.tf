@@ -1,7 +1,7 @@
 resource "aws_lb" "alb" {
   name = var.name
 
-  internal = var.is_lb_internal
+  internal           = var.is_lb_internal
   load_balancer_type = "application"
 
   security_groups = [aws_security_group.lb_sec_group.id]
@@ -27,7 +27,7 @@ resource "aws_lb" "alb" {
 
 resource "aws_lb_listener" "http_listener" {
   load_balancer_arn = aws_lb.alb.arn
-  port = "80"
+  port              = "80"
 
   default_action {
     type = "fixed-response"
@@ -35,23 +35,23 @@ resource "aws_lb_listener" "http_listener" {
     fixed_response {
       content_type = "text/plain"
       message_body = "Oops, I wasn't ready for this"
-      status_code = "200"
+      status_code  = "200"
     }
   }
 }
 
 data "aws_subnets" "public_subnets" {
   filter {
-    name = "vpc-id"
+    name   = "vpc-id"
     values = [var.vpc_id]
   }
   filter {
-    name = "tag:Name"
+    name   = "tag:Name"
     values = ["*Public*"]
   }
 }
 
 data "aws_subnet" "public_subnet" {
   for_each = toset(data.aws_subnets.public_subnets.ids)
-  id = each.value
+  id       = each.value
 }

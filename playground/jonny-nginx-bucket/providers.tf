@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "jonny-multi-purpose-bucket"
-    key = "terraform/playground/jonny-nginx-bucket/terraform.tfstate"
+    key    = "terraform/playground/jonny-nginx-bucket/terraform.tfstate"
     region = "ap-southeast-1"
   }
 

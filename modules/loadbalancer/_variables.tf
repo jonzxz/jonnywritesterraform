@@ -5,27 +5,27 @@ variable "additional_tags" {
 }
 
 variable "name" {
-  type = string
+  type        = string
   description = "Name for application load balancer"
-  default = "Jonny-Mini-ALB"
+  default     = "Jonny-Mini-ALB"
 }
 
 variable "is_lb_internal" {
-  type = bool
+  type        = bool
   description = "Toggle if ALB is internal facing. Defaults false"
-  default = false
+  default     = false
 }
 
 variable "idle_timeout_duration" {
-  type = string
+  type        = string
   description = "Idle timeout duration for ALB. Defaults 60"
-  default = "60"
+  default     = "60"
 }
 
 variable "vpc_id" {
-  type = string
+  type        = string
   description = "ID of VPC for ALB"
-  default = "vpc-03fb2a8297c068114"
+  default     = "vpc-03fb2a8297c068114"
 }
 
 locals {
