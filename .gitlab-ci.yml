@@ -9,5 +9,5 @@ deploy-site:
   script: 
     - aws s3 cp $STATIC_SITE_FILE_PATH s3://
   rules:
-    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" && $CI_MERGE_REQUEST_APPROVED
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master" && $CI_MERGE_REQUEST_APPROVED
   when: manual
