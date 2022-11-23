@@ -1,0 +1,13 @@
+stages:
+  - deploy
+
+deploy-site:
+  stage: deploy
+  variables:
+    S3_BUCKET_URI: "s3://jonny-nginx-bucket/"
+    STATIC_SITE_FILE_PATH: "playground/nginx-autoscaling/public.html"
+  script: 
+    - aws s3 cp $STATIC_SITE_FILE_PATH s3://
+  rules:
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" && $CI_MERGE_REQUEST_APPROVED
+  when: manual
