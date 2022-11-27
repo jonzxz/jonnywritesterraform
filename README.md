@@ -23,9 +23,9 @@
 ### Others
 #### Terraform
 1. The Terraform code here is really barebones - the modules written in `modules` aren't completely dynamic, given that there are many optional or dynamic parameters that I did not put in (due to time constraint), otherwise the code could've been more versatile.
-1. `_outputs.tf` is empty - I'd usually export the important outputs such as `name`, `arn`, `id` for important resources and I `touch _outputs.tf` by default, but in this case it's blank. (I probably need more time for scenario 2)
+1. ~~`_outputs.tf` is empty - I'd usually export the important outputs such as `name`, `arn`, `id` for important resources and I `touch _outputs.tf` by default, but in this case it's blank. (I probably need more time for scenario 2)~~
 1. Variable validations - I'm missing some `validation` on some crucial variables. While most likely Terraform will flag during `plan` or `apply`, it's probably better to just validate them pre-execution. 
-1. I'm missing some cool `pre-commit` I use personally, such as `terraform fmt` and a custom `awk` script that re-orders the variables in `_variables.tf` alphabetically.
+1. ~~I'm missing some cool `pre-commit` I use personally, such as `terraform fmt` and a custom `awk` script that re-orders the variables in `_variables.tf` alphabetically.~~
 1. Tagging and naming could use some improvements - there are some resources that are untagged and unnamed, eg. 
     - EBS root device blocks for each autoscaling instance
     - Launch template (default naming to terraformxxxx)
