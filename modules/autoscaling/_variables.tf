@@ -1,12 +1,9 @@
 locals {
-  nginx_bucket_name = "jonny-nginx-bucket"
-}
-
-locals {
   tags = {
     "ops/managed-by"     = "Terraform",
     "ops/module-primary" = "autoscaling"
   }
+  nginx_bucket_name = "jonny-nginx-bucket"
 }
 
 variable "additional_tags" {
