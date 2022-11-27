@@ -1,12 +1,22 @@
+locals {
+  tags = {
+    "ops/managed-by"     = "Terraform",
+    "ops/module-primary" = "vpc"
+  }
+
+  # Only need 2 AZs to simulate HA, no need 3
+  az_names = slice(data.aws_availability_zones.azs.names, 0, 2)
+}
+
+variable "additional_tags" {
+  type        = map(string)
+  description = "Additional tags to include for resources"
+  default     = {}
+}
+
 variable "cidr_block" {
   type        = string
   description = "VPC CIDR Range"
-}
-
-variable "instance_tenancy" {
-  type        = string
-  description = "Instance tenancy for EC2, defaults to default"
-  default     = "default"
 }
 
 variable "enable_dns_hostnames" {
@@ -27,23 +37,13 @@ variable "enable_ipv6" {
   default     = false
 }
 
-variable "additional_tags" {
-  type        = map(string)
-  description = "Additional tags to include for resources"
-  default     = {}
+variable "instance_tenancy" {
+  type        = string
+  description = "Instance tenancy for EC2, defaults to default"
+  default     = "default"
 }
 
 variable "vpc_name" {
   type        = string
   description = "Name of VPC"
-}
-
-locals {
-  tags = {
-    "ops/managed-by"     = "Terraform",
-    "ops/module-primary" = "vpc"
-  }
-
-  # Only need 2 AZs to simulate HA, no need 3
-  az_names = slice(data.aws_availability_zones.azs.names, 0, 2)
 }

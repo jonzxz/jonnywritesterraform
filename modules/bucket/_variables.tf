@@ -1,3 +1,10 @@
+locals {
+  tags = {
+    "ops/managed-by"     = "Terraform",
+    "ops/module-primary" = "bucket"
+  }
+}
+
 variable "additional_tags" {
   type        = map(string)
   description = "Additional tags to include for resources"
@@ -7,17 +14,6 @@ variable "additional_tags" {
 variable "bucket_name" {
   type        = string
   description = "Bucket name"
-}
-
-variable "versioning" {
-  type        = string
-  description = "Versioning configuration, defaults to disabled"
-  default     = "Disabled"
-
-  validation {
-    condition     = can(regex("Enabled|Suspended|Disabled", var.versioning))
-    error_message = "Versioning must be one of \"Enabled|Suspended|Disabled\"."
-  }
 }
 
 variable "public_access_config" {
@@ -33,9 +29,13 @@ variable "public_access_config" {
   }
 }
 
-locals {
-  tags = {
-    "ops/managed-by"     = "Terraform",
-    "ops/module-primary" = "bucket"
+variable "versioning" {
+  type        = string
+  description = "Versioning configuration, defaults to disabled"
+  default     = "Disabled"
+
+  validation {
+    condition     = can(regex("Enabled|Suspended|Disabled", var.versioning))
+    error_message = "Versioning must be one of \"Enabled|Suspended|Disabled\"."
   }
 }
