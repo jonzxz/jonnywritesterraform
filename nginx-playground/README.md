@@ -1,5 +1,9 @@
 # README
 
+# What is this?
+- This was an OA for a job interview, most of the items listed here are all part of the assessment requirements.
+- This is no longer maintained and will be branched as nginx-playground for archival purposes only.
+
 ## Repository Structure
 - Repository contains modules such as `autoscaling`, `bucket`, `loadbalancer` and `autoscaling`.
 - These modules are invoked by `playground` to set up a cloud environment stack consisting of VPC, 2 public subnets, 2 private subnets, the relevant route tables (and their entries), NAT, Elastic IPs, bucket for static site and the autoscaling groups.
@@ -31,3 +35,11 @@
     - Launch template (default naming to terraformxxxx)
     - Autoscaling instances (missing tag propagations)
     - Again, these can be done, but it does take me some time and does not have functional impact (other than being really, really messy and unidentifiable if there are many things in the account), so I left it be
+
+## Screncaps
+### Deployed with lowercase
+![Lowercase](playground/nginx-autoscaling/screencaps/deployed_lowercase.png)
+
+### Deployed with uppercase (via instance refresh in CI pipeline)
+- Pipeline [here](https://gitlab.com/jonathan.kerk/jonnywritesterraform/-/pipelines/703362430)
+![Uppercase](playground/nginx-autoscaling/screencaps/deployed_uppercase.png)
