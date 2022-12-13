@@ -2,6 +2,7 @@
 
 # What is this?
 - This repository contains half-practice, half-online assessment codes. Terraform modules created here like VPC, buckets are most likely to be reused when I am practicing or doing some other online assessments.
+- If you see some strange Gitlab stuff, ci-skip or others - this is because this repository is forked from my Gitlab repository (since there's runners over there to test simple pipeline stuff)
 
 ## Repository Structure
 - Repository contains modules such as `autoscaling`, `bucket`, `loadbalancer` and `autoscaling`.
