@@ -1,6 +1,5 @@
 locals {
   tags               = merge(var.additional_tags, {})
-  has_policies       = toset(length(var.custom_policies) > 0 ? "true" : [])
   role_description   = length(var.role_description > 0) ? var.role_description : "Role for ${var.role_name}"
   policy_description = length(var.policy_description > 0) ? var.policy_description : "Policy for ${var.role_name} role"
 }
