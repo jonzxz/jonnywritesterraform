@@ -1,9 +1,9 @@
 # IAM Role
 resource "aws_iam_role" "this" {
-  name = var.role_name
-  path = var.path
+  name               = var.role_name
+  path               = var.path
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
-  description = local.role_description
+  description        = local.role_description
 
   tags = merge(local.tags, {
     "Description" = "Role for ${var.role_name}"
@@ -12,25 +12,25 @@ resource "aws_iam_role" "this" {
 
 # Attachment of AWS managed policies to role
 resource "aws_iam_role_policy_attachment" "aws_managed_policies" {
-  for_each = toset(var.aws_policies_arn)
-  role = aws_iam_role.this.id
+  for_each   = toset(var.aws_policies_arn)
+  role       = aws_iam_role.this.id
   policy_arn = each.key
 }
 
 # Attachment of custom policies to r ole
 resource "aws_iam_role_policy_attachment" "custom_policy" {
-  for_each = toset(var.custom_policies)
-  role = aws_iam_role.this.id
+  for_each   = toset(var.custom_policies)
+  role       = aws_iam_role.this.id
   policy_arn = each.key.arn
 }
 
 # Custom policy, creates one if var.custom_policies is defined
 # Takes the policy of merged_custom_policies
 resource "aws_iam_policy" "custom_policy" {
-  for_each = toset(length(var.custom_policies) > 0 ? ["1"] : [])
-  name = var.role_name
-  path = "/"
-  policy = data.aws_iam_policy_document.merged_custom_policies.json
+  for_each    = toset(length(var.custom_policies) > 0 ? ["1"] : [])
+  name        = var.role_name
+  path        = "/"
+  policy      = data.aws_iam_policy_document.merged_custom_policies.json
   description = local.policy_description
   tags = merge(local.tags, {
     "Description" = "IAM Policy for ${var.role_name}"
@@ -47,11 +47,11 @@ data "aws_iam_policy_document" "merged_custom_policies" {
 # Assume role policy JSON
 data "aws_iam_policy_document" "assume_role_json" {
   statement {
-    sid = "AllowAWSAssumeRole"
+    sid     = "AllowAWSAssumeRole"
     actions = ["sts:AssumeRole"]
 
     principals {
-      type = "Service"
+      type        = "Service"
       identifiers = ["${var.aws_service}.amazonaws.com"]
     }
   }
