@@ -3,10 +3,9 @@ resource "aws_iam_role" "this" {
   name               = var.role_name
   path               = var.path
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
-  description        = local.role_description
+  description        = var.role_description
 
   tags = merge(local.tags, {
-    "Description" = "Role for ${var.role_name}"
   })
 }
 
@@ -21,7 +20,7 @@ resource "aws_iam_role_policy_attachment" "aws_managed_policies" {
 resource "aws_iam_role_policy_attachment" "custom_policy" {
   for_each   = toset(var.custom_policies)
   role       = aws_iam_role.this.id
-  policy_arn = each.key.arn
+  policy_arn = each.key
 }
 
 # Custom policy, creates one if var.custom_policies is defined
@@ -31,7 +30,7 @@ resource "aws_iam_policy" "custom_policy" {
   name        = var.role_name
   path        = "/"
   policy      = data.aws_iam_policy_document.merged_custom_policies.json
-  description = local.policy_description
+  description = var.policy_description
   tags = merge(local.tags, {
     "Description" = "IAM Policy for ${var.role_name}"
   })

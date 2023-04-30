@@ -1,7 +1,5 @@
 locals {
   tags               = merge(var.additional_tags, {})
-  role_description   = length(var.role_description > 0) ? var.role_description : "Role for ${var.role_name}"
-  policy_description = length(var.policy_description > 0) ? var.policy_description : "Policy for ${var.role_name} role"
 }
 
 variable "additional_tags" {
@@ -24,13 +22,13 @@ variable "custom_policies" {
 
 variable "role_description" {
   type        = string
-  default     = ""
+  default     = null
   description = "Description for IAM Role"
 }
 
 variable "policy_description" {
   type        = string
-  default     = ""
+  default     = null
   description = "Description for IAM Policy"
 }
 
@@ -38,4 +36,15 @@ variable "aws_service" {
   type        = string
   default     = ""
   description = "AWS Service to allow assume role of the role created"
+}
+
+variable "role_name" {
+  type = string
+  description = "Name of role to create"
+}
+
+variable "path" {
+  type = string
+  description = "Path of the role in IAM"
+  default = "/"
 }
