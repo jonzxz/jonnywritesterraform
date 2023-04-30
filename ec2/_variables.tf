@@ -48,14 +48,8 @@ variable "root_block_volume_type" {
   description = "Type of the root EBS block volume"
 }
 
-variable "template_file_name" {
-  type        = string
-  default     = ""
-  description = "File name of the templatefile, inclusive of path.module if required."
-}
-
-variable "template_file_vars" {
-  type        = map(string)
-  default     = {}
-  description = "Variables to pass into the template file if it exists"
+variable "user_data_base64" {
+  type = string
+  default = null
+  description = "Base64 encoded user data for instance startup"
 }
