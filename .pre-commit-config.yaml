@@ -1,0 +1,13 @@
+repos:
+- repo: https://github.com/antonbabenko/pre-commit-terraform
+  rev: v1.76.0
+  hooks:
+    - id: terraform_fmt
+- repo: local
+  hooks:
+    - id: tfsort
+      name: Terraform Sort Outputs and Variables
+      entry: utils/tfsort.sh
+      files: _(variables|outputs)\.tf$
+      language: script
+      verbose: true
