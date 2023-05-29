@@ -6,6 +6,9 @@ locals {
 
   # Only need 2 AZs to simulate HA, no need 3
   az_names = slice(data.aws_availability_zones.azs.names, 0, 2)
+
+  all_subnet_ids = concat([for subnet in aws_subnet.private_subnets : subnet.id],
+  [for subnet in aws_subnet.public_subnets : subnet.id])
 }
 
 variable "additional_tags" {

@@ -31,9 +31,3 @@ resource "aws_network_acl_rule" "ip4_out" {
   rule_action    = "allow"
   cidr_block     = "0.0.0.0/0"
 }
-
-locals {
-  all_subnet_ids = concat([for subnet in aws_subnet.private_subnets : subnet.id],
-  [for subnet in aws_subnet.public_subnets : subnet.id])
-}
-
