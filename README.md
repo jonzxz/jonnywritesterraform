@@ -10,7 +10,7 @@ github_url: https://github.com/jonzxz/jonnywritesterraform
 ---
 
 # AWS Terraform Modules
-  > Written for practice and previous use-cases. Not all code are "generalized" extensively as some was written with specific purposes.
+  > Written for practice and previous use-cases. Not all code are "generalized" extensively as some was written with specific purposes. <br/>
 
 ## Versions
 | Item | Version |
@@ -28,7 +28,9 @@ This repository and all modules relies on the following pre-requisites:
 ## Getting Started
 This repository is mainly written as a form of practice and for my own testbed. 
 
-Not all Terraform modules written here will be extensive enough to fit all use cases, and some may even be "scoped" for a particular purpose. 
+Not all Terraform modules written here will be extensive enough to fit all use cases, and some may even be "scoped" for a particular purpose. **Not all code will work out of the box**.
+
+The modules written here are accumulated over a long period of time, where there may be small differences in how the code is structured.
 
 There may be some issues with the code from time to time, and there will not be active updates as I work on these in my free time.
 
