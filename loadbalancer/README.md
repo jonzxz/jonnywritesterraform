@@ -46,7 +46,7 @@ module "lb" {
 | [aws_lb_listener](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_listener) | resource |
 | [aws_subnets](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/subnets) | data |
 | [aws_subnet](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/subnet) | data |
-
+| [module.security-group](https://github.com/jonzxz/jonnywritesterraform/tree/master/security-group) | module |
 
 ## Inputs
 | Name | Description | Type | Default | Required |
