@@ -1,5 +1,5 @@
 
----
+```doc
 title: VPC
 description: >
   Represents a generic module to create a standard 3-tiered VPC with public and private subnets.
@@ -10,6 +10,8 @@ tags:
   - vpc
 
 github_url: https://github.com/jonzxz/jonnywritesterraform
+```
+
 ---
 
 # VPC

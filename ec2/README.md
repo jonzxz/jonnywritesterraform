@@ -1,5 +1,5 @@
 
----
+```doc
 title: EC2
 description: >
   Represents a generic module to create an EC2 instance.
@@ -10,6 +10,8 @@ tags:
   - ec2
 
 github_url: https://github.com/jonzxz/jonnywritesterraform
+```
+
 ---
 
 # EC2

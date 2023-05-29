@@ -1,5 +1,5 @@
 
----
+```doc
 title: Load Balancer
 description: >
   Represents a generic module to create an Application Load Balancer.
@@ -10,6 +10,8 @@ tags:
   - alb
 
 github_url: https://github.com/jonzxz/jonnywritesterraform
+```
+
 ---
 
 # Load Balancer

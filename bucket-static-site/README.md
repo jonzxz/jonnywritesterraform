@@ -1,5 +1,5 @@
 
----
+```doc
 title: Bucket (Static Site)
 description: >
   Represents a generic module to create a S3 Bucket for Static website hosting.
@@ -10,6 +10,8 @@ tags:
   - bucket
 
 github_url: https://github.com/jonzxz/jonnywritesterraform
+```
+
 ---
 
 # Bucket (Static Site)

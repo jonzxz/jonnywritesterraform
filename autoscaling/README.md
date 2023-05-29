@@ -1,5 +1,5 @@
 
----
+```doc
 title: Autoscaling
 description: >
   Represents a generic module to create an Autoscaling group and other resources.
@@ -10,6 +10,8 @@ tags:
   - autoscaling
 
 github_url: https://github.com/jonzxz/jonnywritesterraform
+```
+
 ---
 
 # Autoscaling

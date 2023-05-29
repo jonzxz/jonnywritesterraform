@@ -1,5 +1,5 @@
 
----
+```doc
 title: Security Group
 description: >
   Represents a generic module to create a Security Group.
@@ -10,6 +10,8 @@ tags:
   - security-group
 
 github_url: https://github.com/jonzxz/jonnywritesterraform
+```
+
 ---
 
 # Security Group
