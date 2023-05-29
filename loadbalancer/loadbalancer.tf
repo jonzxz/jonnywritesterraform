@@ -19,7 +19,6 @@ resource "aws_lb" "alb" {
     local.tags,
     var.additional_tags,
     {
-      "ops/module" = "loadbalancer",
       "Name"       = var.name
     }
   )

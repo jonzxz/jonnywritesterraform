@@ -1,6 +1,5 @@
 locals {
   tags = {
-    "ops/managed-by"     = "Terraform",
     "ops/module-primary" = "loadbalancer"
   }
 }
@@ -26,11 +25,9 @@ variable "is_lb_internal" {
 variable "name" {
   type        = string
   description = "Name for application load balancer"
-  default     = "Jonny-Mini-ALB"
 }
 
 variable "vpc_id" {
   type        = string
   description = "ID of VPC for ALB"
-  default     = "vpc-03fb2a8297c068114"
 }
