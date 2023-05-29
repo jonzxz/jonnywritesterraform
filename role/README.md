@@ -40,14 +40,14 @@ module "role" {
 ```terraform
 module "role" {
   # Relative path from root module
-  source      = "../role"
+  source           = "../role"
 
-  role_name   = "my-sample-role"
-  aws_service = "ec2"
+  role_name        = "my-sample-role"
+  aws_service      = "ec2"
 
   aws_policies_arn = ["arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"]
 
-  custom_policy = [data.aws_iam_policy_document.sample_policy.json]
+  custom_policy    = [data.aws_iam_policy_document.sample_policy.json]
 
 }
 
