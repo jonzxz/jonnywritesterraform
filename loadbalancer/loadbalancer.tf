@@ -19,7 +19,7 @@ resource "aws_lb" "alb" {
     local.tags,
     var.additional_tags,
     {
-      "Name"       = var.name
+      "Name" = var.name
     }
   )
 }

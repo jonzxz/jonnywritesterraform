@@ -5,7 +5,7 @@ resource "aws_s3_bucket" "bucket" {
     local.tags,
     var.additional_tags,
     {
-      "Name"       = var.bucket_name
+      "Name" = var.bucket_name
     }
   )
 }

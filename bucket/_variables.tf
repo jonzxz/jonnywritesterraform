@@ -1,6 +1,6 @@
 locals {
   tags = {
-    "ops/managed-by"     = "Terraform",
+    "ops/managed-by" = "Terraform",
   }
 }
 
