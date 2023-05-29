@@ -133,11 +133,11 @@ data "aws_iam_policy_document" "cloudflare_dns" {
 }
 
 resource "aws_s3_object" "static_files" {
-  for_each = local.host_bucket > 0 ? fileset("${path.module}/../../../", "build/**/*") : []
+  for_each = local.host_bucket > 0 ? fileset("../../", "build/**/*") : []
 
   bucket             = aws_s3_bucket.bucket.id
   bucket_key_enabled = true
   key                = replace(each.value, "build/", "")
-  source             = "${path.module}/../../../${each.value}"
+  source             = "../../${each.value}"
   content_type       = lookup(local.mime_types, split(".", each.value)[length(split(".", each.value)) - 1])
 }
