@@ -15,7 +15,6 @@ variable "additional_tags" {
 variable "alb_name" {
   type        = string
   description = "Name of ALB for autoscaling and target group"
-  default     = "Jonny-Mini-ALB"
 }
 
 variable "desired_capacity" {
@@ -32,7 +31,7 @@ variable "health_check_grace_period" {
 
 variable "health_check_type" {
   type        = string
-  description = "Health check type for ALB, defaults EC2"
+  description = "Health check type for ALB, defaults ELB"
   default     = "ELB"
 }
 
