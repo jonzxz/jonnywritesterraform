@@ -1,12 +1,14 @@
----
+
+```doc
 title: AWS Terraform Modules
-description: >
-  Collection of AWS Terraform modules for personal use.
+description: Collection of AWS Terraform modules for personal use.
 kind: infrastructure
 tags:
   - aws 
   - terraform
 github_url: https://github.com/jonzxz/jonnywritesterraform
+```
+
 ---
 
 # AWS Terraform Modules
