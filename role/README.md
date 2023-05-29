@@ -1,5 +1,5 @@
 
----
+```doc
 title: Role
 description: >
   Represents a generic module to create a IAM Role.
@@ -10,6 +10,8 @@ tags:
   - role
 
 github_url: https://github.com/jonzxz/jonnywritesterraform
+```
+
 ---
 
 # Role

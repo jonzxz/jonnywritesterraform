@@ -1,5 +1,5 @@
 
----
+```doc
 title: Bucket
 description: >
   Represents a generic module to create a S3 Bucket.
@@ -10,6 +10,8 @@ tags:
   - bucket
 
 github_url: https://github.com/jonzxz/jonnywritesterraform
+```
+
 ---
 
 # Bucket
