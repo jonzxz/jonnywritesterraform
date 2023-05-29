@@ -53,7 +53,7 @@ module "instance" {
 ## Inputs
 | Name | Description | Type | Default | Required |
 | ---- | ----------- | ---- | ------- | -------- |
-| additional_tags | Additional tags to add to role | `map(string)` | `{}` | no |
+| additional_tags | Additional tags to add to instance | `map(string)` | `{}` | no |
 | instance_type | Instance type for the server | `string` | `t3.small` | no |
 | key_name | SSH Key to attach to instance | `string` | `null` | no |
 | subnet_id | ID of subnet to create instance in | `string` | `""` | yes |

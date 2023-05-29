@@ -61,7 +61,7 @@ module "autoscaling" {
 ## Inputs
 | Name | Description | Type | Default | Required |
 | ---- | ----------- | ---- | ------- | -------- |
-| additional_tags | Additional tags to add to role | `map(string)` | `{}` | no |
+| additional_tags | Additional tags to add to autoscaling | `map(string)` | `{}` | no |
 | alb_name | Name of ALB for autoscaling and target group | `string` | `""` | yes |
 | desired_capacity | Desired capacity for autoscaling | `number` | `3` | no |
 | health_check_grace_period | Health check grace period before failure | `number` | `300` | no |

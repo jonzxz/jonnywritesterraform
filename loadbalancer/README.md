@@ -51,7 +51,7 @@ module "lb" {
 ## Inputs
 | Name | Description | Type | Default | Required |
 | ---- | ----------- | ---- | ------- | -------- |
-| additional_tags | Additional tags to add to role | `map(string)` | `{}` | no |
+| additional_tags | Additional tags to add to ALB | `map(string)` | `{}` | no |
 | idle_timeout_duration | Idle timeout duration for ALB | `string` | `60` | no |
 | is_lb_internal | Toggle flag if ALB is internal facing | `bool` | `false` | no |
 | name | Name of ALB | `string` | `""` | yes |

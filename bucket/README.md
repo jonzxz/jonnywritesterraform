@@ -50,7 +50,7 @@ module "bucket" {
 ## Inputs
 | Name | Description | Type | Default | Required |
 | ---- | ----------- | ---- | ------- | -------- |
-| additional_tags | Additional tags to add to role | `map(string)` | `{}` | no |
+| additional_tags | Additional tags to add to bucket | `map(string)` | `{}` | no |
 | bucket_name | Name of S3 bucket to create | `string` | `""` | yes |
 | public_access_config | Public access block configuration | `map(map(bool))` | `{ acl { ...true... }}` | no |
 | versioning | Versioning configuration | `string` | `Disabled` | no |

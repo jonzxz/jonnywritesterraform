@@ -68,7 +68,7 @@ module "security_group" {
 ## Inputs
 | Name | Description | Type | Default | Required |
 | ---- | ----------- | ---- | ------- | -------- |
-| additional_tags | Additional tags to add to role | `map(string)` | `{}` | no |
+| additional_tags | Additional tags to add to security group | `map(string)` | `{}` | no |
 | description | Description for the security group | `string` | `""` | yes |
 | name | Name of the security group | `string` | `""` | yes |
 | rules | Rules for the security group | `any` | `{}` | no |
