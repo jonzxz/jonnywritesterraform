@@ -1,7 +1,6 @@
 locals {
   tags = {
     "ops/managed-by"     = "Terraform",
-    "ops/module-primary" = "bucket"
   }
 }
 
