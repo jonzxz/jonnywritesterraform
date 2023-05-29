@@ -16,7 +16,7 @@ resource "aws_iam_role_policy_attachment" "aws_managed_policies" {
   policy_arn = each.key
 }
 
-# Attachment of custom policies to r ole
+# Attachment of custom policies to role
 resource "aws_iam_role_policy_attachment" "custom_policy" {
   for_each   = toset(var.custom_policies)
   role       = aws_iam_role.this.id

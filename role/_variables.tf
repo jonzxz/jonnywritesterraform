@@ -1,5 +1,5 @@
 locals {
-  tags               = merge(var.additional_tags, {})
+  tags               = merge(var.additional_tags, { Name = var.role_name })
 }
 
 variable "additional_tags" {
