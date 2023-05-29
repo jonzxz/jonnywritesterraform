@@ -12,7 +12,7 @@ tags:
 github_url: https://github.com/jonzxz/jonnywritesterraform
 ---
 
-# Role
+# Security Group
   > Represents a module to create a generic Security Group. <br/>
   > The module takes in a map of map(any) of security group rules to apply to the security group <br/>
 

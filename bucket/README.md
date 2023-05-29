@@ -12,7 +12,7 @@ tags:
 github_url: https://github.com/jonzxz/jonnywritesterraform
 ---
 
-# Role
+# Bucket
   > Represents a module to create a generic S3 bucket. <br/>
   > The bucket is created by default to be private and with versioning disabled. <br/>
 
