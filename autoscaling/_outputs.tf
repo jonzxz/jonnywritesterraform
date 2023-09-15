@@ -15,20 +15,15 @@ output "autoscaling_name" {
 
 output "role_arn" {
   description = "ARN of IAM Role created"
-  value       = aws_iam_role.instance_role.arn
+  value       = module.asg_role.arn
 }
 
-output "role_name" {
-  description = "Name of IAM Role created"
-  value       = aws_iam_role.instance_role.name
-}
-
-output "security_group_arn" {
-  description = "ARN of security group created"
-  value       = aws_security_group.autoscaling_security_group.arn
+output "role_id" {
+  description = "ID of IAM Role created"
+  value       = module.asg_role.id
 }
 
 output "security_group_id" {
   description = "ID of security group created"
-  value       = aws_security_group.autoscaling_security_group.id
+  value       = module.asg_security_group.id
 }

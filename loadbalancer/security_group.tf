@@ -3,9 +3,9 @@ module "lb_security_group" {
 
   name        = "${var.name}-security-group"
   description = "Security group for LB ${var.name}"
-  vpc_id      = var.vpc_id
+  vpc_id      = data.aws_vpc.vpc.id
 
-  tags = merge(local.tags, var.additional_tags)
+  additional_tags = merge(local.tags, var.additional_tags)
 
   rules = {
     inbound_http = {

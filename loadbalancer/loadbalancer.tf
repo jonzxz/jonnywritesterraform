@@ -42,7 +42,7 @@ resource "aws_lb_listener" "http_listener" {
 data "aws_subnets" "public_subnets" {
   filter {
     name   = "vpc-id"
-    values = [var.vpc_id]
+    values = [data.aws_vpc.vpc.id]
   }
   filter {
     name   = "tag:Name"
@@ -53,4 +53,11 @@ data "aws_subnets" "public_subnets" {
 data "aws_subnet" "public_subnet" {
   for_each = toset(data.aws_subnets.public_subnets.ids)
   id       = each.value
+}
+
+data "aws_vpc" "vpc" {
+  filter {
+    name   = "tag:Name"
+    values = [var.vpc_name]
+  }
 }

@@ -17,6 +17,18 @@ variable "alb_name" {
   description = "Name of ALB for autoscaling and target group"
 }
 
+variable "bootstrap_file_name" {
+  type        = string
+  description = "Path to bootstrap file"
+  default     = null
+}
+
+variable "custom_policies" {
+  type        = list(string)
+  description = "Custom policies"
+  default     = []
+}
+
 variable "desired_capacity" {
   type        = number
   description = "Desired capacity for Autoscaling"
@@ -38,7 +50,8 @@ variable "health_check_type" {
 variable "instance_type" {
   type        = string
   description = "Type of instance to launch for Autoscaling"
-  default     = "t2.micro"
+  #default     = "t2.micro"
+  default = "t3.medium"
 }
 
 variable "listener_rule_type" {
@@ -77,7 +90,7 @@ variable "service_name" {
   default     = "nginx"
 }
 
-variable "vpc_id" {
+variable "vpc_name" {
   type        = string
-  description = "VPC to launch autoscaling in"
+  description = "Name of VPC to launch autoscaling in"
 }

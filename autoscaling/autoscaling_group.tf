@@ -26,9 +26,15 @@ resource "aws_launch_template" "launch_template" {
     arn = aws_iam_instance_profile.instance_profile.arn
   }
 
-  vpc_security_group_ids = [aws_security_group.autoscaling_security_group.id]
+  metadata_options {
+    http_endpoint               = "enabled"
+    http_tokens                 = "required"
+    http_put_response_hop_limit = 1
+  }
 
-  user_data = filebase64("${path.module}/run.sh")
+  vpc_security_group_ids = [module.asg_security_group.id]
+
+  user_data = var.bootstrap_file_name
 
   tags = merge(
     local.tags,
@@ -45,7 +51,7 @@ resource "aws_lb_target_group" "target_group" {
   target_type = "instance"
   port        = var.port
   protocol    = var.protocol
-  vpc_id      = var.vpc_id
+  vpc_id      = data.aws_vpc.vpc.id
 
   health_check {
     path     = "/"
@@ -95,10 +101,17 @@ data "aws_ami" "amzn_linux2_ami" {
   owners = ["137112412989"]
 }
 
+data "aws_vpc" "vpc" {
+  filter {
+    name   = "tag:Name"
+    values = [var.vpc_name]
+  }
+}
+
 data "aws_subnets" "private_subnets" {
   filter {
     name   = "vpc-id"
-    values = [var.vpc_id]
+    values = [data.aws_vpc.vpc.id]
   }
   filter {
     name   = "tag:Name"

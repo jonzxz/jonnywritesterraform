@@ -27,7 +27,7 @@ variable "name" {
   description = "Name for application load balancer"
 }
 
-variable "vpc_id" {
+variable "vpc_name" {
   type        = string
-  description = "ID of VPC for ALB"
+  description = "Name of VPC for ALB"
 }

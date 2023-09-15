@@ -18,16 +18,16 @@ resource "aws_iam_role_policy_attachment" "aws_managed_policies" {
 
 # Attachment of custom policies to role
 resource "aws_iam_role_policy_attachment" "custom_policy" {
-  for_each   = toset(var.custom_policies)
+  for_each   = toset(length(var.custom_policies) > 0 ? ["1"] : [])
   role       = aws_iam_role.this.id
-  policy_arn = each.key
+  policy_arn = aws_iam_policy.custom_policy["1"].arn
 }
 
 # Custom policy, creates one if var.custom_policies is defined
 # Takes the policy of merged_custom_policies
 resource "aws_iam_policy" "custom_policy" {
   for_each    = toset(length(var.custom_policies) > 0 ? ["1"] : [])
-  name        = var.role_name
+  name        = "${var.role_name}-policy"
   path        = "/"
   policy      = data.aws_iam_policy_document.merged_custom_policies.json
   description = var.policy_description
@@ -58,5 +58,5 @@ data "aws_iam_policy_document" "assume_role_json" {
 
 # Assume role policy to be used by the role
 data "aws_iam_policy_document" "assume_role" {
-  source_json = data.aws_iam_policy_document.assume_role_json.json
+  source_policy_documents = [data.aws_iam_policy_document.assume_role_json.json]
 }

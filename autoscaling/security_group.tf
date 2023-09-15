@@ -3,7 +3,7 @@ module "asg_security_group" {
 
   name        = "${var.service_name}-security-group"
   description = "Security group for autoscaling group ${var.service_name}"
-  vpc_id      = var.vpc_id
+  vpc_id      = data.aws_vpc.vpc.id
   rules = {
     inbound_http = {
       type                     = "ingress"
@@ -36,5 +36,5 @@ resource "aws_security_group_rule" "outbound_http" {
 }
 
 data "aws_security_group" "lb_sg" {
-  name = "${var.alb_name}-Security-Group"
+  name = "${var.alb_name}*"
 }
