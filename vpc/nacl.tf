@@ -4,21 +4,21 @@ resource "aws_default_network_acl" "nacl" {
   subnet_ids = local.all_subnet_ids
 
   ingress {
-    protocol    = -1
-    rule_no     = 100
-    action      = "allow"
-    cidr_blocok = "0.0.0.0/0"
-    from_port   = 0
-    to_port     = 0
+    protocol   = -1
+    rule_no    = 100
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
+    from_port  = 0
+    to_port    = 0
   }
 
   egress {
-    protocol    = -1
-    rule_no     = 100
-    action      = "allow"
-    cidr_blocok = "0.0.0.0/0"
-    from_port   = 0
-    to_port     = 0
+    protocol   = -1
+    rule_no    = 100
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
+    from_port  = 0
+    to_port    = 0
   }
 
   tags = merge(
